@@ -3,6 +3,7 @@ import ExpandablePanel from '@/components/ui/ExpandablePanel';
 import Button from '@/components/ui/Button';
 import { GoTrash } from 'react-icons/go';
 import { useRemoveAlbumMutation } from '@/store';
+import PhotosList from '@/components/photos/PhotosList';
 
 type AlbumItemProps = {
     album: Album;
@@ -25,7 +26,7 @@ export default function AlbumsListItem({ album }: AlbumItemProps) {
     );
     return (
         <ExpandablePanel header={header} key={album.id}>
-            List of photos in the album.
+            <PhotosList album={album} />
         </ExpandablePanel>
     );
 }

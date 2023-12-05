@@ -4,14 +4,20 @@ import users from './slices/usersSlice';
 import albums, {
     middleware as albumsApiMiddleware,
 } from '@/store/apis/albumsApi';
+import photos, {
+    middleware as photosApiMiddleware,
+} from '@/store/apis/photosApi';
 
 export const store = configureStore({
     reducer: {
         users,
         albums,
+        photos,
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(albumsApiMiddleware);
+        return getDefaultMiddleware()
+            .concat(albumsApiMiddleware)
+            .concat(photosApiMiddleware);
     },
 });
 
@@ -27,3 +33,8 @@ export {
     useAddAlbumMutation,
     useRemoveAlbumMutation,
 } from '@/store/apis/albumsApi';
+export {
+    useFetchPhotosQuery,
+    useAddPhotoMutation,
+    useRemovePhotoMutation,
+} from '@/store/apis/photosApi';
