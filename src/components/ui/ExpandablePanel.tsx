@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { GoChevronDown, GoChevronLeft } from 'react-icons/go';
 
 type ExpandedPanelProps = {
-    header: string;
+    header: ReactNode;
     children: ReactNode;
 };
 
@@ -14,8 +14,8 @@ function ExpandablePanel({ header, children }: ExpandedPanelProps) {
     };
 
     return (
-        <div className='mb-2 border rounded'>
-            <div className='flex p-2 justify-between items-center'>
+        <div className='mb-2 rounded border'>
+            <div className='flex items-center justify-between p-2'>
                 <div className='flex flex-row items-center justify-between'>
                     {header}
                 </div>
@@ -23,7 +23,7 @@ function ExpandablePanel({ header, children }: ExpandedPanelProps) {
                     {expanded ? <GoChevronDown /> : <GoChevronLeft />}
                 </div>
             </div>
-            {expanded && <div className='p-2 border-t'>{children}</div>}
+            {expanded && <div className='border-t p-2'>{children}</div>}
         </div>
     );
 }
